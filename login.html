@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Acesso do desenvolvedor</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;700&family=Figtree:wght@400;500;600&display=swap">
+<style>
+:root{
+  --bg:#f7f4ed;--panel:#fff;--fg:#16233a;--muted:#5d6472;--line:#e0d9c8;--ouro:#8a6530;
+  --accent:#1b3a6b;--on-accent:#fff;--danger:#b3362b;
+  --display:"Bricolage Grotesque","Segoe UI",sans-serif;--body:"Figtree","Segoe UI",sans-serif;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0f1a2b;--panel:#172437;--fg:#eef1f6;--muted:#a7b3c4;--line:#2c3b52;--ouro:#d4ae6e;--danger:#ef8277;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#0f1a2b;--panel:#172437;--fg:#eef1f6;--muted:#a7b3c4;--line:#2c3b52;--ouro:#d4ae6e;--danger:#ef8277;color-scheme:dark}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.5 var(--body);padding:64px 16px}
+form{max-width:400px;margin:auto;background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:24px;display:grid;gap:14px}
+h1{font:700 1.6rem/1.2 var(--display);margin:0}
+p{margin:0;color:var(--muted);font-size:.92rem}
+label{display:grid;gap:4px;font-weight:600;font-size:.9rem}
+input{width:100%;font:400 1rem var(--body);color:var(--fg);background:var(--bg);border:1px solid var(--line);border-radius:6px;padding:9px 10px}
+:focus-visible{outline:2px solid var(--ouro);outline-offset:2px}
+button{background:var(--accent);color:var(--on-accent);border:1px solid var(--accent);border-radius:6px;padding:10px 14px;font:600 .95rem var(--body);cursor:pointer}
+button:disabled{opacity:.6;cursor:default}
+a{color:inherit;font-size:.9rem}
+#erro{color:var(--danger)}
+#erro:empty{display:none}
+</style>
+</head>
+<body>
+<form id="f">
+  <h1>Acesso do desenvolvedor</h1>
+  <p>Entre com o seu e-mail e a sua senha para abrir o cadastro de imóveis.</p>
+  <label>E-mail <input id="email" type="email" required autocomplete="username" autocapitalize="none"></label>
+  <label>Senha <input id="senha" type="password" required autocomplete="current-password"></label>
+  <p id="erro" role="alert"></p>
+  <button id="ok" type="submit">Entrar</button>
+  <a href="index.html">Voltar para o site</a>
+</form>
+<script src="nuvem.js"></script>
+<script>
+var $=function(id){return document.getElementById(id)};
+try{var tema=localStorage.getItem('imobiliaria-tema');if(tema)document.documentElement.setAttribute('data-theme',tema)}catch(e){}
+if(nuvemSessao())location.replace('admin.html');
+$('f').addEventListener('submit',function(e){e.preventDefault();$('erro').textContent='';$('ok').disabled=true;
+  nuvemEntrar($('email').value.trim(),$('senha').value).then(function(){location.replace('admin.html')}).catch(function(r){
+    $('ok').disabled=false;
+    $('erro').textContent=r.status>=400&&r.status<500?'E-mail ou senha incorretos.':'Não consegui entrar. Confira a internet e tente de novo.'})});
+</script>
+</body>
+</html>
