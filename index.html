@@ -54,8 +54,7 @@ header.solid .bar{background:color-mix(in srgb,var(--panel) 88%,transparent);col
 .hero{position:relative;min-height:min(92vh,820px);display:grid;align-items:end;color:#fff;overflow:hidden;isolation:isolate;background:var(--navy)}
 .hero-img{position:absolute;inset:0;z-index:-2;background:var(--banner,none) center/cover;opacity:0;transform:scale(1.08);transition:opacity 1.4s var(--ease)}
 .hero-img.on{opacity:1;animation:kb 26s ease-in-out infinite alternate}
-@media (min-width:901px){.hero-img{left:30%;-webkit-mask:linear-gradient(90deg,transparent,#000 30%);mask:linear-gradient(90deg,transparent,#000 30%)}}
-@media (max-width:640px){.hero-img{top:38%;background-position:58% 100%;-webkit-mask:linear-gradient(180deg,transparent,#000 22%);mask:linear-gradient(180deg,transparent,#000 22%)}}
+@media (max-width:640px){.hero-img{background-position:62% center}}
 @keyframes kb{from{transform:scale(1.02) translate3d(0,0,0)}to{transform:scale(1.09) translate3d(-1.5%,-1%,0)}}
 .hero::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(15,34,64,.55) 0%,rgba(15,34,64,.15) 35%,rgba(10,22,42,.88) 100%),radial-gradient(120% 80% at 0% 100%,rgba(15,34,64,.7),transparent 60%)}
 .hero::after{content:"";position:absolute;inset:0;z-index:-1;background:radial-gradient(60% 50% at 85% 10%,rgba(217,183,121,.22),transparent 70%);pointer-events:none}
@@ -391,7 +390,7 @@ function tipos(){var s=$('f-tipo'),v=s.value;
   s.value=v;if(s.selectedIndex<0)s.value=''}
 
 /* Foto do topo: um imóvel real da carteira (ou o banner do admin, se houver). */
-function fotoTopo(){var url=C.banner||'hero.svg';var img=new Image();img.onload=function(){var el=$('hero-img');el.style.setProperty('--banner','url("'+url.replace(/"/g,'%22')+'")');el.classList.add('on')};img.src=url}
+function fotoTopo(){var url=C.banner||'hero.webp';var img=new Image();img.onload=function(){var el=$('hero-img');el.style.setProperty('--banner','url("'+url.replace(/"/g,'%22')+'")');el.classList.add('on')};img.src=url}
 
 /* Botão de tema: lembra a escolha do visitante neste navegador. */
 var TEMA='imobiliaria-tema';
