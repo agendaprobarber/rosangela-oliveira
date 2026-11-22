@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1000" preserveAspectRatio="xMidYMid slice">
+<defs>
+  <linearGradient id="ceu" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0" stop-color="#0b1a33"/><stop offset=".45" stop-color="#23406e"/><stop offset=".72" stop-color="#b9805a"/><stop offset=".86" stop-color="#e9b977"/><stop offset="1" stop-color="#f3d39a"/>
+  </linearGradient>
+  <radialGradient id="sol" cx=".72" cy=".74" r=".35">
+    <stop offset="0" stop-color="#ffe7b0" stop-opacity=".95"/><stop offset=".25" stop-color="#f4c47c" stop-opacity=".55"/><stop offset="1" stop-color="#f4c47c" stop-opacity="0"/>
+  </radialGradient>
+  <linearGradient id="luz" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffdca0"/><stop offset="1" stop-color="#f0a85a"/></linearGradient>
+  <linearGradient id="parede" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#1a2639"/><stop offset="1" stop-color="#26354d"/></linearGradient>
+  <linearGradient id="clara" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#e9e2d4"/><stop offset="1" stop-color="#b9ae9a"/></linearGradient>
+  <linearGradient id="agua" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#3f6c8f"/><stop offset="1" stop-color="#18304d"/></linearGradient>
+  <linearGradient id="chao" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1b2a1f"/><stop offset="1" stop-color="#0c140f"/></linearGradient>
+  <filter id="brilho" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="14"/></filter>
+</defs>
+<rect width="1600" height="1000" fill="url(#ceu)"/>
+<rect width="1600" height="1000" fill="url(#sol)"/>
+<g fill="#fff" opacity=".7"><circle cx="180" cy="90" r="1.6"/><circle cx="420" cy="150" r="1.2"/><circle cx="640" cy="70" r="1.4"/><circle cx="930" cy="120" r="1"/><circle cx="1210" cy="60" r="1.5"/><circle cx="1450" cy="140" r="1.1"/><circle cx="300" cy="230" r="1"/><circle cx="1080" cy="210" r="1.2"/></g>
+<!-- morros distantes -->
+<path d="M0 700 C200 650 380 690 560 660 S900 620 1100 655 S1450 640 1600 660 V1000 H0Z" fill="#33405a" opacity=".55"/>
+<path d="M0 745 C260 715 470 740 700 720 S1180 700 1600 730 V1000 H0Z" fill="#202c40"/>
+<!-- palmeiras -->
+<g fill="#0f1826">
+  <rect x="1328" y="470" width="9" height="300" rx="4" transform="rotate(4 1332 620)"/>
+  <path d="M1345 470 q-70 -10 -120 40 q60 -25 120 -32 q-40 25 -70 80 q45 -55 72 -70 q5 50 -10 100 q30 -55 22 -105 q40 30 60 90 q-5 -60 -40 -100 q70 0 115 35 q-40 -55 -112 -50 q50 -35 110 -30 q-60 -30 -125 20Z"/>
+  <rect x="190" y="520" width="8" height="250" rx="4" transform="rotate(-5 194 650)"/>
+  <path d="M188 520 q-60 -5 -100 35 q50 -20 100 -25 q-35 22 -55 65 q38 -45 60 -55 q4 40 -8 85 q26 -45 18 -88 q34 25 50 75 q-4 -50 -34 -84 q58 0 96 30 q-34 -46 -94 -42 q42 -30 92 -25 q-50 -26 -104 16Z"/>
+</g>
+<!-- casa moderna -->
+<g>
+  <!-- volume esquerdo escuro -->
+  <rect x="430" y="545" width="330" height="225" fill="url(#parede)"/>
+  <!-- laje superior em balanço -->
+  <rect x="610" y="430" width="560" height="22" fill="#e9e2d4"/>
+  <rect x="640" y="452" width="500" height="148" fill="url(#clara)"/>
+  <!-- janela panorâmica superior -->
+  <rect x="690" y="474" width="400" height="104" fill="url(#luz)"/>
+  <g stroke="#2a2418" stroke-width="5" opacity=".8"><line x1="790" y1="474" x2="790" y2="578"/><line x1="890" y1="474" x2="890" y2="578"/><line x1="990" y1="474" x2="990" y2="578"/></g>
+  <rect x="690" y="474" width="400" height="104" fill="#fff" opacity=".08"/>
+  <!-- laje inferior -->
+  <rect x="400" y="530" width="780" height="18" fill="#e9e2d4"/>
+  <!-- volume térreo com vidro -->
+  <rect x="760" y="548" width="400" height="222" fill="#1d293d"/>
+  <rect x="785" y="575" width="350" height="195" fill="url(#luz)"/>
+  <g stroke="#2a2418" stroke-width="5" opacity=".75"><line x1="872" y1="575" x2="872" y2="770"/><line x1="960" y1="575" x2="960" y2="770"/><line x1="1048" y1="575" x2="1048" y2="770"/></g>
+  <!-- interior sugerido -->
+  <g opacity=".35" fill="#7a4a24"><rect x="900" y="700" width="120" height="40" rx="8"/><rect x="1060" y="640" width="40" height="100"/><circle cx="830" cy="640" r="18"/><rect x="826" y="655" width="8" height="60"/></g>
+  <!-- ripado de madeira -->
+  <g fill="#8a5a33"><rect x="455" y="570" width="10" height="200"/><rect x="475" y="570" width="10" height="200"/><rect x="495" y="570" width="10" height="200"/><rect x="515" y="570" width="10" height="200"/><rect x="535" y="570" width="10" height="200"/><rect x="555" y="570" width="10" height="200"/></g>
+  <!-- porta e janela estreita -->
+  <rect x="600" y="600" width="70" height="170" fill="#0e1522"/><rect x="688" y="585" width="40" height="150" fill="url(#luz)" opacity=".9"/>
+  <!-- brilho das janelas -->
+  <g filter="url(#brilho)" opacity=".55" fill="#ffc777"><rect x="700" y="490" width="380" height="80"/><rect x="795" y="590" width="330" height="170"/></g>
+</g>
+<!-- deck e piscina -->
+<rect x="360" y="770" width="900" height="16" fill="#c9b79a"/>
+<rect x="0" y="786" width="1600" height="214" fill="url(#chao)"/>
+<path d="M300 800 H1300 L1360 870 H240Z" fill="url(#agua)"/>
+<g opacity=".55"><rect x="785" y="808" width="350" height="50" fill="url(#luz)"/></g>
+<g stroke="#ffe0a8" stroke-opacity=".35" stroke-width="2"><path d="M380 830 q40 -6 80 0 t80 0"/><path d="M1150 845 q40 -6 80 0 t80 0"/><path d="M600 852 q40 -6 80 0 t80 0"/></g>
+<!-- arbustos -->
+<g fill="#16241a"><ellipse cx="420" cy="775" rx="60" ry="26"/><ellipse cx="1210" cy="775" rx="70" ry="28"/><ellipse cx="1290" cy="770" rx="40" ry="22"/><ellipse cx="350" cy="772" rx="35" ry="20"/></g>
+<!-- luminárias de jardim -->
+<g fill="#ffd590"><circle cx="300" cy="900" r="3"/><circle cx="560" cy="905" r="3"/><circle cx="1040" cy="905" r="3"/><circle cx="1300" cy="900" r="3"/></g>
+<g filter="url(#brilho)" fill="#ffc777" opacity=".5"><circle cx="300" cy="900" r="16"/><circle cx="560" cy="905" r="16"/><circle cx="1040" cy="905" r="16"/><circle cx="1300" cy="900" r="16"/></g>
+</svg>

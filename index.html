@@ -54,6 +54,8 @@ header.solid .bar{background:color-mix(in srgb,var(--panel) 88%,transparent);col
 .hero{position:relative;min-height:min(92vh,820px);display:grid;align-items:end;color:#fff;overflow:hidden;isolation:isolate;background:var(--navy)}
 .hero-img{position:absolute;inset:0;z-index:-2;background:var(--banner,none) center/cover;opacity:0;transform:scale(1.08);transition:opacity 1.4s var(--ease)}
 .hero-img.on{opacity:1;animation:kb 26s ease-in-out infinite alternate}
+@media (min-width:901px){.hero-img{left:30%;-webkit-mask:linear-gradient(90deg,transparent,#000 30%);mask:linear-gradient(90deg,transparent,#000 30%)}}
+@media (max-width:640px){.hero-img{top:38%;background-position:58% 100%;-webkit-mask:linear-gradient(180deg,transparent,#000 22%);mask:linear-gradient(180deg,transparent,#000 22%)}}
 @keyframes kb{from{transform:scale(1.02) translate3d(0,0,0)}to{transform:scale(1.09) translate3d(-1.5%,-1%,0)}}
 .hero::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(15,34,64,.55) 0%,rgba(15,34,64,.15) 35%,rgba(10,22,42,.88) 100%),radial-gradient(120% 80% at 0% 100%,rgba(15,34,64,.7),transparent 60%)}
 .hero::after{content:"";position:absolute;inset:0;z-index:-1;background:radial-gradient(60% 50% at 85% 10%,rgba(217,183,121,.22),transparent 70%);pointer-events:none}
@@ -206,6 +208,49 @@ summary{cursor:pointer;font-weight:600}
   .passos{grid-template-columns:minmax(0,1fr)}
   .grid.lista .casa{grid-template-columns:minmax(0,1fr)}
 }
+/* Mobile: toque nativo, sem zoom nos campos, respeita notch/barra do iPhone */
+html{-webkit-tap-highlight-color:transparent}
+button,a,.casa{touch-action:manipulation}
+.mais{display:none}
+@media (hover:none){.ver{opacity:1;transform:none;padding:7px 12px;font-size:.78rem}.casa:hover .ph .pic{transform:none}.btn:hover,.passo:hover{transform:none;box-shadow:none}}
+@media (max-width:640px){
+  .wrap{padding:0 16px}
+  header{top:max(10px,env(safe-area-inset-top));padding:0 10px}
+  .hero{min-height:88svh}
+  .hero .wrap{padding-top:110px}
+  h1{font-size:clamp(2.5rem,12vw,3.4rem);max-width:none}
+  .sub{font-size:1rem}
+  .hero-acts{display:grid;grid-template-columns:1fr;gap:10px}
+  .hero-acts .btn{justify-content:center;padding:15px 20px}
+  input,select{font-size:16px;padding:13px 12px}
+  .filtros{padding:10px;border-radius:20px;gap:4px}
+  .filtros:not(.aberto) label:not(:first-child){display:none}
+  .mais{display:flex;grid-column:1/-1;justify-content:center;align-items:center;gap:8px;margin:2px 8px 6px;padding:12px;border-radius:12px;border:1px dashed var(--line);background:none;color:var(--fg);font:600 .9rem var(--body);cursor:pointer}
+  .mais svg{transition:transform .3s var(--ease)}.filtros.aberto .mais svg{transform:rotate(180deg)}
+  .filtros.aberto label{animation:up .35s var(--ease) both}
+  .esteira{margin-top:40px}.trilho span{font-size:1rem;padding:14px}
+  .sec-h{margin-bottom:22px}
+  .grid{gap:30px}
+  .valor{font-size:1.4rem}
+  .passo{padding:22px}
+  .faixa{margin-top:72px}.faixa .wrap{padding-block:56px}.faixa .btn{width:100%;justify-content:center}
+  .tela{padding:100px 0 64px}
+  .zapf{right:14px;bottom:max(14px,env(safe-area-inset-bottom));width:54px;height:54px}
+  #cookie{left:10px;right:76px;bottom:max(14px,env(safe-area-inset-bottom));padding:12px;font-size:.9rem}
+  footer .wrap{padding-bottom:calc(90px + env(safe-area-inset-bottom))}
+  #dev{justify-self:start}
+  /* detalhe vira gaveta que sobe de baixo */
+  #det{padding:48px 0 0;display:flex;align-items:flex-end}
+  .det-b{width:100%;margin:0;border-radius:24px 24px 0 0;padding:20px 16px calc(20px + env(safe-area-inset-bottom));animation:sobe .45s var(--ease);max-height:none}
+  .det-b::before{content:"";justify-self:center;width:44px;height:5px;border-radius:3px;background:var(--line);margin:-6px 0 4px}
+  #det.sai .det-b{animation:sobe .25s var(--ease) reverse forwards}
+  .galeria{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:8px;margin:0 -16px;padding:0 16px;scrollbar-width:none}
+  .galeria::-webkit-scrollbar{display:none}
+  .galeria .pic,.galeria .pic:first-child{flex:0 0 88%;scroll-snap-align:center;aspect-ratio:4/3}
+  .det-b .acts{position:sticky;bottom:calc(-20px - env(safe-area-inset-bottom));background:var(--panel);margin:0 -16px;padding:12px 16px calc(12px + env(safe-area-inset-bottom));border-top:1px solid var(--line);display:grid;grid-template-columns:1fr auto}
+  .det-b .acts .btn{justify-content:center}
+}
+@keyframes sobe{from{transform:translateY(100%)}}
 @media (max-width:640px){
   .links .nav:not(.cta){display:none}
   .brand{flex:1 1 auto}.brand .creci{display:none}.brand img{height:36px;width:36px}
@@ -249,6 +294,7 @@ summary{cursor:pointer;font-weight:600}
       <label>Valor mínimo <select id="f-min"><option value="">Qualquer</option><option value="800">R$ 800</option><option value="2000">R$ 2 mil</option><option value="5000">R$ 5 mil</option><option value="100000">R$ 100 mil</option><option value="300000">R$ 300 mil</option><option value="500000">R$ 500 mil</option><option value="800000">R$ 800 mil</option><option value="1200000">R$ 1,2 milhão</option><option value="2000000">R$ 2 milhões</option></select></label>
       <label>Tamanho mínimo <select id="f-m"><option value="">Qualquer</option><option value="50">50 m²</option><option value="100">100 m²</option><option value="150">150 m²</option><option value="250">250 m²</option></select></label>
       <label>Situação <select id="f-st"><option value="">Disponíveis</option><option>À venda</option><option>Para alugar</option><option>Pendente</option><option>Vendida</option></select></label>
+      <button class="mais" id="mais" type="button" aria-expanded="false">Mais filtros <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button>
     </div>
   </div>
 
@@ -345,8 +391,7 @@ function tipos(){var s=$('f-tipo'),v=s.value;
   s.value=v;if(s.selectedIndex<0)s.value=''}
 
 /* Foto do topo: um imóvel real da carteira (ou o banner do admin, se houver). */
-function fotoTopo(){var url=C.banner;if(!url){var c=intercalar(ordenadas()).find(function(h){return h.fotos&&h.fotos[0]&&h.status!=='Vendida'});url=c&&c.fotos[0]}
-  if(!url)return;var img=new Image();img.onload=function(){var el=$('hero-img');el.style.setProperty('--banner','url("'+url.replace(/"/g,'%22')+'")');el.classList.add('on')};img.src=url}
+function fotoTopo(){var url=C.banner||'hero.svg';var img=new Image();img.onload=function(){var el=$('hero-img');el.style.setProperty('--banner','url("'+url.replace(/"/g,'%22')+'")');el.classList.add('on')};img.src=url}
 
 /* Botão de tema: lembra a escolha do visitante neste navegador. */
 var TEMA='imobiliaria-tema';
@@ -375,7 +420,7 @@ function iniciar(){
   var sl=C.slogan||'Construindo sonhos, realizando negócios',p=sl.split(',');
   $('v-titulo').innerHTML=p.length>1?esc(p[0])+',<br><em>'+esc(p.slice(1).join(',').trim())+'</em>':esc(sl);
   $('v-sobre').textContent=C.apoio||'Casas, apartamentos e terrenos à venda e para alugar, com atendimento próximo do primeiro contato até a assinatura.';
-  if(C.banner)fotoTopo();
+  fotoTopo();
   $('filtros').hidden=!C.busca;
   tipos();
   $('v-foot').innerHTML='<strong>'+esc(C.nome)+'</strong><div>CRECI J 11265'+(C.creci?' · CRECI '+esc(C.creci):'')+'</div>'+(C.sobre?'<div>'+esc(C.sobre)+'</div>':'')+'<div>'+[C.tel,C.zap&&'WhatsApp '+C.zap,C.email,C.horario,C.end||ENDERECO,C.insta,C.face].filter(Boolean).map(esc).join(' · ')+'</div>'+(C.priv?'<details><summary>Política de privacidade</summary>'+esc(C.priv)+'</details>':'');
@@ -387,6 +432,11 @@ function iniciar(){
 }
 
 ['f-txt','f-cod','f-tipo','f-min','f-m','f-st'].forEach(function(i){$(i).addEventListener('input',mostrar)});
+$('mais').addEventListener('click',function(){var a=$('filtros').classList.toggle('aberto');this.setAttribute('aria-expanded',a);this.firstChild.textContent=a?'Menos filtros ':'Mais filtros '});
+/* Celular: arrastar a gaveta para baixo fecha o detalhe. */
+(function(){var y0=null,el=null;$('det').addEventListener('touchstart',function(e){el=e.target.closest('.det-b');if(el&&$('det').scrollTop<=0)y0=e.touches[0].clientY;else y0=null},{passive:true});
+  $('det').addEventListener('touchmove',function(e){if(y0==null)return;var dy=e.touches[0].clientY-y0;if(dy>0){el.style.transform='translateY('+dy+'px)';el.style.transition='none'}},{passive:true});
+  $('det').addEventListener('touchend',function(e){if(y0==null)return;var dy=e.changedTouches[0].clientY-y0;el.style.transition='transform .3s cubic-bezier(.22,1,.36,1)';if(dy>110){el.style.transform='translateY(100%)';setTimeout(function(){el.style.cssText='';$('det').hidden=true;document.body.style.overflow=''},280)}else el.style.transform='';y0=null})})();
 
 /* Tela Entre em contato */
 var ENDERECO='Rua Pernambuco, 2471-B, Paranavaí - PR';
@@ -428,7 +478,7 @@ $('cookie-ok').addEventListener('click',function(){$('cookie').hidden=true;try{l
 /* Busca os imóveis no Supabase e mostra as novidades sem recarregar a página. */
 var ultimo=null;
 function conferir(){nuvemImoveis().then(function(l){var n=JSON.stringify(l),primeira=!carregou;carregou=true;if(n===ultimo)return;
-  ultimo=n;CASAS=l;tipos();mostrar();if(primeira&&!C.banner)fotoTopo()}).catch(function(){
+  ultimo=n;CASAS=l;tipos();mostrar()}).catch(function(){
   if(!carregou)$('v-grid').innerHTML='<div class="empty">Não foi possível carregar os imóveis. Tente de novo em instantes.</div>'})}
 
 iniciar();
