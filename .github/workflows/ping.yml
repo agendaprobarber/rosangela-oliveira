@@ -1,0 +1,23 @@
+name: Manter banco ativo
+# O Supabase gratis pausa o projeto apos ~7 dias sem uso. Este ping consulta o banco a cada 3 dias.
+on:
+  schedule:
+    - cron: '17 9 */3 * *'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  ping:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Consulta o banco
+        run: |
+          curl -fsS 'https://etfhrckvunyiqchovwya.supabase.co/rest/v1/imoveis?select=id&limit=1' -H 'apikey: sb_publishable_GQdp1ueAwBBryC9dnvpXHQ_ZnUQEEL8'
+      - uses: actions/checkout@v4
+      # O GitHub desliga agendamentos apos 60 dias sem atividade; um commit vazio por mes evita isso.
+      - name: Mantem o repositorio ativo
+        run: |
+          if [ "$(date +%d)" -le 03 ]; then
+            git config user.name "ping-bot"; git config user.email "ping-bot@users.noreply.github.com"
+            git commit --allow-empty -m "ping mensal" && git push
+          fi
